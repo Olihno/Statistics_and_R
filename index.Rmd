@@ -15,6 +15,7 @@ description: "This is a minimal example of using the bookdown package to write a
 # Project aims
 
 The aim of this book is to collect statistical results in a brief but formal way with examples of application in *R Programming* [@r2018]. 
+
 ## Prerequisites
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.

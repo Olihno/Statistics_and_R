@@ -17,3 +17,5 @@ example-one
 example-two
 final-words
 prerequisites
+fig:nice-fig
+tab:nice-tab
