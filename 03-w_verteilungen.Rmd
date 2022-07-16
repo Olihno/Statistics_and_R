@@ -12,12 +12,13 @@ Eine [Wahrscheinlichkeitsverteilung](/Statistics/Fundament) heißt eine diskrete
 **R** nutzt standatisierte Präfixe, um verschiedene Verteilungseigenschaften abzufragen:
 
 | Präfix  | Bedeutung                                 | Math. Ausdruck |
-|:-------:|:-------------                             |:------         |
-| `d`     | Probability density function (*PDF*)      | $P(X=x)$       |
-| `p`     | Cumulative distribution function  (*CDF*) | $P(X \leq x)$  |
-| `q`     | Quantile function                         | Given $p$, the smallest $x$ such that $P(X\leq x) > p$|
+|:-----|:---------------------------|:-----------------|
+| `d`     | Zähldiche (*PMF*) bzw. Wahrscheinlichkeitsdichte  (*PDF*)   | $P(X=x)$       |
+| `p`     | Verteilungsfunktion (*CDF*) | $P(X \leq x)$  |
+| `q`     | Quantilsfunktion                         | Given $p$, the smallest $x$ such that $P(X\leq x) > p$|
+| `r`     | Ziehen aus gegebener Verteilung                         | `n`:= Anzahl der Ziehungen |
 
-`q` gibt also das Invers der *CDF* ($P(X\leq x)$) und damit für eine entsprechende Wahrscheinlichkeit $p$ dasjenige $x$, sodass die Wkt., dass $X\leq x$ gleich $p$ ist.
+`q` gibt also die Umkehrfunktion der *CDF* ($P(X\leq x)$) und damit für eine entsprechende Wahrscheinlichkeit $p$ dasjenige $x$, sodass die Wkt., dass $X\leq x$ gleich $p$ ist.
 
 ## Bernoulli-Verteilung
 
@@ -47,16 +48,18 @@ Die Binomialverteilung beschreibt die Anzahl der Erfolge in einem **Bernoulli-Pr
 
 ## Geometrische Verteilung
 
-Werden nacheinander *unabhängige Bernoulli-Experimente* durchgeführt, d.h. es gibt die Versuchsausgänge $1$ (Erfolg) und $0$ (Missverfolg), dann gibt die geometrische Verteilung entweder:
+Werden nacheinander *unabhängige Bernoulli-Experimente* durchgeführt, d.h. es gibt die Versuchsausgänge $1$ (Erfolg, z.B. Kopf) und $0$ (Missverfolg, z.B. Zahl), dann ordnet die geometrische Verteilung entweder
 
-- **Variante A**: die Wahrscheinlichkeitsverteilung der Anzahl $X$ der Bernoulli-Versuche, die notwendig sind, um einen Erfolg zu haben (definiert auf der Menge  $\mathbb {N}$), oder
-- **Variante B**: die Wahrscheinlichkeitsverteilung der Anzahl $Y$ der Fehlversuche vor dem ersten Erfolg. Diese Verteilung ist auf der Menge $\mathbb {N} _{0}$ definiert.
+- **Variante A**: der Anzahl $X$ der Bernoulli-Versuche, bis zum ersten Erfolg (definiert auf der Menge  $\mathbb {N}$), bzw.
+- **Variante B**: der Anzahl $Y$ der Fehlversuche vor dem ersten Erfolg (definiert auf der Menge $\mathbb {N} _{0}$)
 
-Die beiden Varianten stehen in der Beziehung $X=Y+1$.
+Wahrscheinlichkeiten zu. Theoretisch können dabei unendlich viele Bernoulli-Experimente nötig sein. Die beiden Varianten stehen in der Beziehung $X=Y+1$. 
+
+Da die Experimente unabhängig sind, müssen damit $P(X=n)$ alle Versuche vor dem $n$-ten Versuch müssen gescheitert sein und der $n$-te Versuch muss erfolgreich gewesen sein. Die Wahrscheinlichkeitsfunktion ist demanach $P(X=n) = (1-p)^{n-1} p$ .
 
 | Geometrische Verteilung |   |
 |:---------------------|:--------------------------------------------------------|
-|**Definition**| Eine diskrete Zufallsgröße $X$ oder $Y$ mit den Parametern $p$ und $q=1-p$ (Wahrscheinlichkeiten für Erfolg / Misserfolg) genügt der geometrischen Verteilung $G(p)$, wenn für die Wahrscheinlichkeit, dass man genau $n$ Versuche benötigt, um zum ersten Erfolg zu kommen, gilt $${\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}=pq^{n-1}\quad (n=1,2,\dotsc )},$$ bzw. für die Wahrscheinlichkeit, $n$ Fehlversuche vor dem ersten Erfolg zu haben, gilt $$\operatorname {P}(Y=n)=p(1-p)^{{n}}=pq^{{n}}\quad (n=0,1,2,\dotsc ).$$|
+|**Definition / Verteilungsfunktion**| $X \sim G(p)$ , wenn für die Wahrscheinlichkeit, dass man genau $n$ Versuche benötigt, um zum ersten Erfolg zu kommen, gilt $${\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}},$$ bzw. $Y \sim G(p)$, wenn für die Wahrscheinlichkeit, $n$ Fehlversuche vor dem ersten Erfolg zu haben, gilt $$\operatorname {P}(Y=n)=p(1-p)^{{n}}, \;n=0,1,2,\dotsc .$$|
 |**Verteilungsfunktion (A)**|$${\displaystyle \operatorname {P} (X\leq n)=1-q^{n}=1-(1-p)^{n}}$$|
 |**Verteilungsfunktion (B)**|$${\displaystyle \operatorname {P} (Y\leq n)=1-q^{n+1}=1-(1-p)^{n+1}}$$|
 |**Erwartungswert (A)**|$$\operatorname {E}(X)={\frac {1}{p}}$$|
@@ -70,50 +73,47 @@ Die beiden Varianten stehen in der Beziehung $X=Y+1$.
 
 Ist also von einer geometrisch verteilten Zufallsvariablen bekannt, dass sie größer als der Wert $n$ ist (Variante A) bzw. mindestens den Wert $n$ hat (Variante B), so ist die Wahrscheinlichkeit, dass sie diesen Wert um $k$ übertrifft, genau so groß wie die, dass eine identische Zufallsvariable überhaupt den Wert $k$ annimmt.
 
-Die Gedächtnislosigkeit ist eine definierende Eigenschaft; die geometrische Verteilung ist also die einzig mögliche gedächtnislose diskrete Verteilung. Ihr stetiges Pendant hierbei ist die Exponentialverteilung. 
+Die Gedächtnislosigkeit ist eine definierende Eigenschaft; die geometrische Verteilung ist also die einzig mögliche gedächtnislose diskrete Verteilung. Ihr stetiges Pendant hierbei ist die *Exponentialverteilung* (\@ref(exponentialverteilung)). 
 
 
-### Wahrscheinlichkeitsverteilung (probability mass function) in R
+### R: Zähldichte (probability mass function)
 
-**Beispiel**: Wie oft muss ich beim *Mensch-ärgere-dich-nicht-Spiel* auf die erste Sechs warten? Dieses Warten auf das erstmalige Eintreten eines bestimmten Ereignisses, d.h. das „Warten auf den ersten Erfolg“, lässt sich mathematisch durch die zufällige Anzahl $X$ von BERNOULLI-Experimenten mit der Erfolgswahrscheinlichkeit $p$ beschreiben.
+**Beispiel**: Wie oft muss ich beim *Mensch-ärgere-dich-nicht-Spiel* auf die erste Sechs warten? 
 
-Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige bzw. 3 Mal warten muss (d.h. einen Misserfolg habe), ist:
+Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige ($P(X=4)$) bzw. 3 Mal warten muss (d.h. 3 Misserfolg habe, $P(Y=3)$), ist:
 
 ```{r density geometric distribution}
 dgeom(x = 3, prob = 1/6, log = FALSE)
 ```
 
-Entsprechend ergibt sich für die Wartenzeiten $0$ bis $10$ Mal Würfeln dann folgendes Bild:
+Entsprechend ergibt sich für die Anzahl der Misserfolge/Würfe vor dem ersten Erfolg bzw. die Wartenzeit im Bereich  $[0, 12]$ dann folgende **Zähldiche** bzw. **probability mass function** (PMF):
 
-```{r}
+```{r geometric-dist, fig.cap='Zähldichte der geometrischen Verteilung.', out.width='80%', fig.asp=.75, fig.align='center'}
 x   <- 0:12                                              # Choose the sample space (here, it's 0,1,2,...,10)
-p_x <- dgeom(x = x, prob = 1/6)                          # compute the shape of the distribution
+p_x <- dgeom(x = x, prob = 1/6)                          # Compute the shape of the distribution
 
 plot(x, p_x, type="h", xlim=c(0,12), ylim=c(0,max(p_x)), # Plot the Geometric probability dist
-     lwd=8, col="blue",ylab="P (X=x)")
-title("CDF of Geometric (prob = 1/6)")
+     lwd = 8, col = "blue",ylab = "P (Y = n)", xlab = "n")
 ```
 
 
-### Verteilungsfunktion (CDF) in R
+### R: Verteilungsfunktion (CDF)
 
-Um nun die Wahrscheinlichkeit zu finden, dass man höchstens drei Mal warten muss -- also maximal vier Mal würfelt bevor man die $6$ erhält -- braucht man die CDF (`pgeom`).
-
-Die entsprechende Wahrscheinlichkeit ist:
+Um nun die Wahrscheinlichkeit für höchstens drei Misserfolge vor dem ersten Erflog zu finden -- also dafür spätestens beim vierten Mal die $6$ zu erhalten -- benötigt man die **Verteilungsfunktion** bzw. CDF:
 
 ```{r}
 pgeom(q = 3, prob = 1/6)
 ```
 
-Entsprechend ergibt sich für die Fälle, dass die Wartezeit kleiner bzw. gleich $0, 1, ...$ ist dann folgendes Bild:
+Entsprechend ergibt sich für die Wahrscheinlichekiten, dass die Wartezeit kleiner bzw. gleich $0, 1, ...$ ($P(Y\leq n)$) ist dann folgende CDF:
 
-```{r}
+```{r geometric-cdf, fig.cap='Verteilungsfunktion (CDF) der geometrischen Verteilung.', out.width='80%', fig.asp=.75, fig.align='center'}
 x   <- 0:12                      # choose the sample space (here, it's 0,1,2,...,10)
 Fx <- pgeom(q = x, prob = 1/6)   # compute the shape of the distribution
 n <- length(x)
 
 plot(x = NA, y = NA, pch = NA, xlim = c(0, max(x)), ylim = c(0, 1),
-     xlab = "x", ylab = "P (X<=x)", main = "CDF of Geometric (prob = 1/6)")
+     xlab = "n", ylab = "P (Y <= n)")
 
 points(x = x[-n], y = Fx[-n], pch=19, col = "blue")
 points(x = x[-1], y = Fx[-n], pch=1, col = "blue")

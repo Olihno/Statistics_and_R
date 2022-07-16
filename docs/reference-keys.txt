@@ -24,3 +24,10 @@ axiomatischer-aufbau-der-wahrscheinlichkeitstheorie
 wahrscheinlichkeitsverteilungen-in-r
 wahrscheinlichkeitsverteilung-probability-mass-function-in-r
 verteilungsfunktion-cdf-in-r
+stetige-wahrscheinlichkeitsverteilungen
+Exponentialverteilung
+exponentialverteilung
+fig:geometric-dist
+fig:geometric-cdf
+r-zähldichte-probability-mass-function
+r-verteilungsfunktion-cdf

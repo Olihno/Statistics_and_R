@@ -1,0 +1,4 @@
+# Stetige Wahrscheinlichkeitsverteilungen
+
+## Exponentialverteilung {#exponentialverteilung}
+

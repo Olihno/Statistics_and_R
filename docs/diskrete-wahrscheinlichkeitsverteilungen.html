@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="zufallsvariablen.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="stetige-wahrscheinlichkeitsverteilungen.html"/>
 <script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,9 +152,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#binominalverteilung"><i class="fa fa-check"></i><b>4.3</b> Binominalverteilung</a></li>
 <li class="chapter" data-level="4.4" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#geometrische-verteilung"><i class="fa fa-check"></i><b>4.4</b> Geometrische Verteilung</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#wahrscheinlichkeitsverteilung-probability-mass-function-in-r"><i class="fa fa-check"></i><b>4.4.1</b> Wahrscheinlichkeitsverteilung (probability mass function) in R</a></li>
-<li class="chapter" data-level="4.4.2" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#verteilungsfunktion-cdf-in-r"><i class="fa fa-check"></i><b>4.4.2</b> Verteilungsfunktion (CDF) in R</a></li>
+<li class="chapter" data-level="4.4.1" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#r-zähldichte-probability-mass-function"><i class="fa fa-check"></i><b>4.4.1</b> R: Zähldichte (probability mass function)</a></li>
+<li class="chapter" data-level="4.4.2" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#r-verteilungsfunktion-cdf"><i class="fa fa-check"></i><b>4.4.2</b> R: Verteilungsfunktion (CDF)</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stetige-wahrscheinlichkeitsverteilungen.html"><a href="stetige-wahrscheinlichkeitsverteilungen.html"><i class="fa fa-check"></i><b>5</b> Stetige Wahrscheinlichkeitsverteilungen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stetige-wahrscheinlichkeitsverteilungen.html"><a href="stetige-wahrscheinlichkeitsverteilungen.html#exponentialverteilung"><i class="fa fa-check"></i><b>5.1</b> Exponentialverteilung</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -190,36 +194,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>R</strong> nutzt standatisierte Präfixe, um verschiedene Verteilungseigenschaften abzufragen:</p>
 <table>
 <colgroup>
-<col width="30%" />
-<col width="46%" />
-<col width="23%" />
+<col width="11%" />
+<col width="53%" />
+<col width="34%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Präfix</th>
+<th align="left">Präfix</th>
 <th align="left">Bedeutung</th>
 <th align="left">Math. Ausdruck</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><code>d</code></td>
-<td align="left">Probability density function (<em>PDF</em>)</td>
+<td align="left"><code>d</code></td>
+<td align="left">Zähldiche (<em>PMF</em>) bzw. Wahrscheinlichkeitsdichte (<em>PDF</em>)</td>
 <td align="left"><span class="math inline">\(P(X=x)\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><code>p</code></td>
-<td align="left">Cumulative distribution function (<em>CDF</em>)</td>
+<td align="left"><code>p</code></td>
+<td align="left">Verteilungsfunktion (<em>CDF</em>)</td>
 <td align="left"><span class="math inline">\(P(X \leq x)\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><code>q</code></td>
-<td align="left">Quantile function</td>
+<td align="left"><code>q</code></td>
+<td align="left">Quantilsfunktion</td>
 <td align="left">Given <span class="math inline">\(p\)</span>, the smallest <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(X\leq x) &gt; p\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><code>r</code></td>
+<td align="left">Ziehen aus gegebener Verteilung</td>
+<td align="left"><code>n</code>:= Anzahl der Ziehungen</td>
 </tr>
 </tbody>
 </table>
-<p><code>q</code> gibt also das Invers der <em>CDF</em> (<span class="math inline">\(P(X\leq x)\)</span>) und damit für eine entsprechende Wahrscheinlichkeit <span class="math inline">\(p\)</span> dasjenige <span class="math inline">\(x\)</span>, sodass die Wkt., dass <span class="math inline">\(X\leq x\)</span> gleich <span class="math inline">\(p\)</span> ist.</p>
+<p><code>q</code> gibt also die Umkehrfunktion der <em>CDF</em> (<span class="math inline">\(P(X\leq x)\)</span>) und damit für eine entsprechende Wahrscheinlichkeit <span class="math inline">\(p\)</span> dasjenige <span class="math inline">\(x\)</span>, sodass die Wkt., dass <span class="math inline">\(X\leq x\)</span> gleich <span class="math inline">\(p\)</span> ist.</p>
 </div>
 <div id="bernoulli-verteilung" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Bernoulli-Verteilung</h2>
@@ -274,12 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="geometrische-verteilung" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Geometrische Verteilung</h2>
-<p>Werden nacheinander <em>unabhängige Bernoulli-Experimente</em> durchgeführt, d.h. es gibt die Versuchsausgänge <span class="math inline">\(1\)</span> (Erfolg) und <span class="math inline">\(0\)</span> (Missverfolg), dann gibt die geometrische Verteilung entweder:</p>
+<p>Werden nacheinander <em>unabhängige Bernoulli-Experimente</em> durchgeführt, d.h. es gibt die Versuchsausgänge <span class="math inline">\(1\)</span> (Erfolg, z.B. Kopf) und <span class="math inline">\(0\)</span> (Missverfolg, z.B. Zahl), dann ordnet die geometrische Verteilung entweder</p>
 <ul>
-<li><strong>Variante A</strong>: die Wahrscheinlichkeitsverteilung der Anzahl <span class="math inline">\(X\)</span> der Bernoulli-Versuche, die notwendig sind, um einen Erfolg zu haben (definiert auf der Menge <span class="math inline">\(\mathbb {N}\)</span>), oder</li>
-<li><strong>Variante B</strong>: die Wahrscheinlichkeitsverteilung der Anzahl <span class="math inline">\(Y\)</span> der Fehlversuche vor dem ersten Erfolg. Diese Verteilung ist auf der Menge <span class="math inline">\(\mathbb {N} _{0}\)</span> definiert.</li>
+<li><strong>Variante A</strong>: der Anzahl <span class="math inline">\(X\)</span> der Bernoulli-Versuche, bis zum ersten Erfolg (definiert auf der Menge <span class="math inline">\(\mathbb {N}\)</span>), bzw.</li>
+<li><strong>Variante B</strong>: der Anzahl <span class="math inline">\(Y\)</span> der Fehlversuche vor dem ersten Erfolg (definiert auf der Menge <span class="math inline">\(\mathbb {N} _{0}\)</span>)</li>
 </ul>
-<p>Die beiden Varianten stehen in der Beziehung <span class="math inline">\(X=Y+1\)</span>.</p>
+<p>Wahrscheinlichkeiten zu. Theoretisch können dabei unendlich viele Bernoulli-Experimente nötig sein. Die beiden Varianten stehen in der Beziehung <span class="math inline">\(X=Y+1\)</span>.</p>
+<p>Da die Experimente unabhängig sind, müssen damit <span class="math inline">\(P(X=n)\)</span> alle Versuche vor dem <span class="math inline">\(n\)</span>-ten Versuch müssen gescheitert sein und der <span class="math inline">\(n\)</span>-te Versuch muss erfolgreich gewesen sein. Die Wahrscheinlichkeitsfunktion ist demanach <span class="math inline">\(P(X=n) = (1-p)^{n-1} p\)</span> .</p>
 <table>
 <colgroup>
 <col width="27%" />
@@ -293,8 +303,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><strong>Definition</strong></td>
-<td align="left">Eine diskrete Zufallsgröße <span class="math inline">\(X\)</span> oder <span class="math inline">\(Y\)</span> mit den Parametern <span class="math inline">\(p\)</span> und <span class="math inline">\(q=1-p\)</span> (Wahrscheinlichkeiten für Erfolg / Misserfolg) genügt der geometrischen Verteilung <span class="math inline">\(G(p)\)</span>, wenn für die Wahrscheinlichkeit, dass man genau <span class="math inline">\(n\)</span> Versuche benötigt, um zum ersten Erfolg zu kommen, gilt <span class="math display">\[{\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}=pq^{n-1}\quad (n=1,2,\dotsc )},\]</span> bzw. für die Wahrscheinlichkeit, <span class="math inline">\(n\)</span> Fehlversuche vor dem ersten Erfolg zu haben, gilt <span class="math display">\[\operatorname {P}(Y=n)=p(1-p)^{{n}}=pq^{{n}}\quad (n=0,1,2,\dotsc ).\]</span></td>
+<td align="left"><strong>Definition / Verteilungsfunktion</strong></td>
+<td align="left"><span class="math inline">\(X \sim G(p)\)</span> , wenn für die Wahrscheinlichkeit, dass man genau <span class="math inline">\(n\)</span> Versuche benötigt, um zum ersten Erfolg zu kommen, gilt <span class="math display">\[{\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}},\]</span> bzw. <span class="math inline">\(Y \sim G(p)\)</span>, wenn für die Wahrscheinlichkeit, <span class="math inline">\(n\)</span> Fehlversuche vor dem ersten Erfolg zu haben, gilt <span class="math display">\[\operatorname {P}(Y=n)=p(1-p)^{{n}}, \;n=0,1,2,\dotsc .\]</span></td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Verteilungsfunktion (A)</strong></td>
@@ -324,40 +334,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Variante B: <span class="math inline">\(\operatorname {P}(Y=n+k\,|\,Y\geq n)=\operatorname {P}(Y=k)\quad n,k=0,1,2,\dotsc\)</span></li>
 </ul>
 <p>Ist also von einer geometrisch verteilten Zufallsvariablen bekannt, dass sie größer als der Wert <span class="math inline">\(n\)</span> ist (Variante A) bzw. mindestens den Wert <span class="math inline">\(n\)</span> hat (Variante B), so ist die Wahrscheinlichkeit, dass sie diesen Wert um <span class="math inline">\(k\)</span> übertrifft, genau so groß wie die, dass eine identische Zufallsvariable überhaupt den Wert <span class="math inline">\(k\)</span> annimmt.</p>
-<p>Die Gedächtnislosigkeit ist eine definierende Eigenschaft; die geometrische Verteilung ist also die einzig mögliche gedächtnislose diskrete Verteilung. Ihr stetiges Pendant hierbei ist die Exponentialverteilung.</p>
-<div id="wahrscheinlichkeitsverteilung-probability-mass-function-in-r" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Wahrscheinlichkeitsverteilung (probability mass function) in R</h3>
-<p><strong>Beispiel</strong>: Wie oft muss ich beim <em>Mensch-ärgere-dich-nicht-Spiel</em> auf die erste Sechs warten? Dieses Warten auf das erstmalige Eintreten eines bestimmten Ereignisses, d.h. das „Warten auf den ersten Erfolg“, lässt sich mathematisch durch die zufällige Anzahl <span class="math inline">\(X\)</span> von BERNOULLI-Experimenten mit der Erfolgswahrscheinlichkeit <span class="math inline">\(p\)</span> beschreiben.</p>
-<p>Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige bzw. 3 Mal warten muss (d.h. einen Misserfolg habe), ist:</p>
+<p>Die Gedächtnislosigkeit ist eine definierende Eigenschaft; die geometrische Verteilung ist also die einzig mögliche gedächtnislose diskrete Verteilung. Ihr stetiges Pendant hierbei ist die <em>Exponentialverteilung</em> (<a href="stetige-wahrscheinlichkeitsverteilungen.html#exponentialverteilung">5.1</a>).</p>
+<div id="r-zähldichte-probability-mass-function" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> R: Zähldichte (probability mass function)</h3>
+<p><strong>Beispiel</strong>: Wie oft muss ich beim <em>Mensch-ärgere-dich-nicht-Spiel</em> auf die erste Sechs warten?</p>
+<p>Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige (<span class="math inline">\(P(X=4)\)</span>) bzw. 3 Mal warten muss (d.h. 3 Misserfolg habe, <span class="math inline">\(P(Y=3)\)</span>), ist:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgeom</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.09645062</code></pre>
-<p>Entsprechend ergibt sich für die Wartenzeiten <span class="math inline">\(0\)</span> bis <span class="math inline">\(10\)</span> Mal Würfeln dann folgendes Bild:</p>
+<p>Entsprechend ergibt sich für die Anzahl der Misserfolge/Würfe vor dem ersten Erfolg bzw. die Wartenzeit im Bereich <span class="math inline">\([0, 12]\)</span> dann folgende <strong>Zähldiche</strong> bzw. <strong>probability mass function</strong> (PMF):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x   <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>                                              <span class="co"># Choose the sample space (here, it&#39;s 0,1,2,...,10)</span></span>
-<span id="cb3-2"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-2" aria-hidden="true" tabindex="-1"></a>p_x <span class="ot">&lt;-</span> <span class="fu">dgeom</span>(<span class="at">x =</span> x, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)                          <span class="co"># compute the shape of the distribution</span></span>
+<span id="cb3-2"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-2" aria-hidden="true" tabindex="-1"></a>p_x <span class="ot">&lt;-</span> <span class="fu">dgeom</span>(<span class="at">x =</span> x, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)                          <span class="co"># Compute the shape of the distribution</span></span>
 <span id="cb3-3"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, p_x, <span class="at">type=</span><span class="st">&quot;h&quot;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(p_x)), <span class="co"># Plot the Geometric probability dist</span></span>
-<span id="cb3-5"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd=</span><span class="dv">8</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;P (X=x)&quot;</span>)</span>
-<span id="cb3-6"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;CDF of Geometric (prob = 1/6)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<span id="cb3-5"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="dv">8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">ylab =</span> <span class="st">&quot;P (Y = n)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:geometric-dist"></span>
+<img src="bookdown-demo_files/figure-html/geometric-dist-1.png" alt="Zähldichte der geometrischen Verteilung." width="80%" />
+<p class="caption">
+Figure 4.1: Zähldichte der geometrischen Verteilung.
+</p>
 </div>
-<div id="verteilungsfunktion-cdf-in-r" class="section level3" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Verteilungsfunktion (CDF) in R</h3>
-<p>Um nun die Wahrscheinlichkeit zu finden, dass man höchstens drei Mal warten muss – also maximal vier Mal würfelt bevor man die <span class="math inline">\(6\)</span> erhält – braucht man die CDF (<code>pgeom</code>).</p>
-<p>Die entsprechende Wahrscheinlichkeit ist:</p>
+</div>
+<div id="r-verteilungsfunktion-cdf" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> R: Verteilungsfunktion (CDF)</h3>
+<p>Um nun die Wahrscheinlichkeit für höchstens drei Misserfolge vor dem ersten Erflog zu finden – also dafür spätestens beim vierten Mal die <span class="math inline">\(6\)</span> zu erhalten – benötigt man die <strong>Verteilungsfunktion</strong> bzw. CDF:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pgeom</span>(<span class="at">q =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## [1] 0.5177469</code></pre>
-<p>Entsprechend ergibt sich für die Fälle, dass die Wartezeit kleiner bzw. gleich <span class="math inline">\(0, 1, ...\)</span> ist dann folgendes Bild:</p>
+<p>Entsprechend ergibt sich für die Wahrscheinlichekiten, dass die Wartezeit kleiner bzw. gleich <span class="math inline">\(0, 1, ...\)</span> (<span class="math inline">\(P(Y\leq n)\)</span>) ist dann folgende CDF:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-1" aria-hidden="true" tabindex="-1"></a>x   <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>                      <span class="co"># choose the sample space (here, it&#39;s 0,1,2,...,10)</span></span>
 <span id="cb6-2"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-2" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">pgeom</span>(<span class="at">q =</span> x, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)   <span class="co"># compute the shape of the distribution</span></span>
 <span id="cb6-3"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
 <span id="cb6-4"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="cn">NA</span>, <span class="at">y =</span> <span class="cn">NA</span>, <span class="at">pch =</span> <span class="cn">NA</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(x)), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb6-6"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;P (X&lt;=x)&quot;</span>, <span class="at">main =</span> <span class="st">&quot;CDF of Geometric (prob = 1/6)&quot;</span>)</span>
+<span id="cb6-6"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;P (Y &lt;= n)&quot;</span>)</span>
 <span id="cb6-7"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-8"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> x[<span class="sc">-</span>n], <span class="at">y =</span> Fx[<span class="sc">-</span>n], <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb6-9"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> x[<span class="sc">-</span><span class="dv">1</span>], <span class="at">y =</span> Fx[<span class="sc">-</span>n], <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb6-10"><a href="diskrete-wahrscheinlichkeitsverteilungen.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>)) <span class="fu">points</span>(<span class="at">x=</span>x[i<span class="sc">+</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">y=</span>Fx[<span class="fu">c</span>(i,i)], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span id="fig:geometric-cdf"></span>
+<img src="bookdown-demo_files/figure-html/geometric-cdf-1.png" alt="Verteilungsfunktion (CDF) der geometrischen Verteilung." width="80%" />
+<p class="caption">
+Figure 4.2: Verteilungsfunktion (CDF) der geometrischen Verteilung.
+</p>
+</div>
 
 </div>
 </div>
@@ -368,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="zufallsvariablen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="stetige-wahrscheinlichkeitsverteilungen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
