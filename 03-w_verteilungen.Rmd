@@ -21,33 +21,24 @@ Eine [Wahrscheinlichkeitsverteilung](/Statistics/Fundament) heißt eine diskrete
 
 ## Bernoulli-Verteilung
 
-Zufallsgrößen mit einer *Bernoulli-Verteilung* (auch als *Null-Eins-Verteilung*, *Boole-Verteilung* bezeichnet) benutzt man zur Beschreibung von zufälligen Ereignissen, bei denen es nur zwei mögliche Versuchsausgänge (*Erfolg/Misserfolg*) gibt. 
+Zufallsgrößen mit einer *Bernoulli-Verteilung* (auch *Null-Eins-Verteilung*, *Boole-Verteilung*) nutzt man zur Beschreibung von zufälligen Ereignissen, bei denen es nur zwei mögliche Versuchsausgänge (*Erfolg/Misserfolg*) gibt. 
 
 Die zugehörige Wahrscheinlichkeit $p$ für einen Erfolg nennt man Erfolgswahrscheinlichkeit und $q = 1 − p$ die Wahrscheinlichkeit eines Misserfolgs. 
 
-**Beispiele**:
-
-- Werfen einer Münze: Kopf (Erfolg), $p=1/2$, und Zahl (Misserfolg), $q=1/2$.
-- Werfen eines Würfels, wobei nur eine „6“ als Erfolg gewertet wird: $p=1/6$, $q=5/6$.
-
-**Definition**: *Eine diskrete Zufallsgröße $X$ mit Werten in der Menge $\{0,1\}$ unterliegt der Null-Eins-Verteilung mit dem Parameter $p\in [0,1]$, wenn sie der folgenden Wahrscheinlichkeitsfunktion folgt:*
-
-$$
+| Bernoulli-Verteilung |   |
+|:---------------------|:--------------------------------------------------------|
+|**Definition**|*Eine diskrete Zufallsgröße $X$ mit Werten in der Menge $\{0,1\}$ unterliegt der Null-Eins-Verteilung mit dem Parameter $p\in [0,1]$, wenn sie der folgenden Wahrscheinlichkeitsfunktion folgt:* $$
 {\displaystyle f(x\mid p)={\begin{cases}p^{x}(1-p)^{1-x}&{\text{falls}}\quad x=0,1\\0&{\text{sonst.}}\end{cases}}} 
-$$
-
-Die **Verteilungsfunktion** ist dann
-$$
-{\displaystyle F_{X}(x)={\begin{cases}0&{\text{ falls }}\quad x<0\\1-p&{\text{ falls }}\quad 0\leq x<1\\1&{\text{ falls }}\quad x\geq 1\end{cases}}}.
-$$
+$$|
+|**Verteilungsfunktion**|$${\displaystyle F_{X}(x)={\begin{cases}0&{\text{ falls }}\quad x<0\\1-p&{\text{ falls }}\quad 0\leq x<1\\1&{\text{ falls }}\quad x\geq 1\end{cases}}}.$$|
+|**Erwartungswert**|$${E}\left(X\right)=p$$|
+|**Varianz**|$${V}\left(X\right)=pq$$|
+|**Beispiel 1**|Werfen einer Münze: Kopf (Erfolg), $p=1/2$, und Zahl (Misserfolg), $q=1/2$.|
+|**Beispiel 2**|Werfen eines Würfels, wobei nur eine „6“ als Erfolg gewertet wird: $p=1/6$, $q=5/6$.|
 
 Man schreibt dann ${\displaystyle X\sim {\mathcal {B}}(p)}$ oder $X\sim Ber_{p}$. 
 
-Eine Reihe von unabhängigen identischen Versuchen, bei der jeder Einzelversuch der Bernoulli-Verteilung genügt, wird ***Bernoulli-Prozess*** oder *bernoullisches Versuchsschema* genannt. 
-
-**Erwartungswert**: $\;\;\;\,{E}\left(X\right)=p$
-**Varianz**: $\qquad \qquad {V}\left(X\right)=pq$
-
+Eine Reihe von unabhängigen identischen Versuchen, bei der jeder Einzelversuch der Bernoulli-Verteilung genügt, wird ***Bernoulli-Prozess*** oder *bernoullisches Versuchsschema* genannt.
 
 ## Binominalverteilung
 
@@ -56,39 +47,21 @@ Die Binomialverteilung beschreibt die Anzahl der Erfolge in einem **Bernoulli-Pr
 
 ## Geometrische Verteilung
 
-Die  geometrische Verteilung ist univariat und wird aus *unabhängigen Bernoulli-Experimenten* abgeleitet und in zwei Varianten definiert:
+Werden nacheinander *unabhängige Bernoulli-Experimente* durchgeführt, d.h. es gibt die Versuchsausgänge $1$ (Erfolg) und $0$ (Missverfolg), dann gibt die geometrische Verteilung entweder:
 
-- **Variante 1**: Die Wahrscheinlichkeitsverteilung der Anzahl $X$ der Bernoulli-Versuche, die notwendig sind, um einen Erfolg zu haben (definiert auf der Menge  $\mathbb {N}$).
-- **Variante 2**: Die Wahrscheinlichkeitsverteilung der Anzahl $Y$ der Fehlversuche vor dem ersten Erfolg. Diese Verteilung ist auf der Menge $\mathbb {N} _{0}$ definiert.
+- **Variante A**: die Wahrscheinlichkeitsverteilung der Anzahl $X$ der Bernoulli-Versuche, die notwendig sind, um einen Erfolg zu haben (definiert auf der Menge  $\mathbb {N}$), oder
+- **Variante B**: die Wahrscheinlichkeitsverteilung der Anzahl $Y$ der Fehlversuche vor dem ersten Erfolg. Diese Verteilung ist auf der Menge $\mathbb {N} _{0}$ definiert.
 
 Die beiden Varianten stehen in der Beziehung $X=Y+1$.
 
-**Beispiele**:
-
-- *Wartezeiten* bis zum Eintreffen eines bestimmten Ereignisses.
-- *Lebensdauerbestimmung* von Geräten und Bauteilen, d. h. dem Warten bis zum ersten Ausfall.
-
-**Definition**:
-Eine diskrete Zufallsgröße $X$ oder $Y$ mit dem Parameter $p$ (Wahrscheinlichkeit für einen Erfolg), $q=1-p$ (Wahrscheinlichkeit für einen Misserfolg) genügt der geometrischen Verteilung $G(p)$, wenn:
-
-**Variante A**: Für die Wahrscheinlichkeit, dass man genau $n$ Versuche benötigt, um zum ersten Erfolg zu kommen, gilt ${\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}=pq^{n-1}\quad (n=1,2,\dotsc )}$.
-
-**Variante B**: Für die Wahrscheinlichkeit, $n$ Fehlversuche vor dem ersten Erfolg zu haben, gilt $\operatorname {P}(Y=n)=p(1-p)^{{n}}=pq^{{n}}\quad (n=0,1,2,\dotsc )$.
-
-**Verteilungsfunktion**:
-
-- Variante A: 
-${\displaystyle F(n)=\operatorname {P} (X\leq n)=p\sum _{i=1}^{n}q^{i-1}=p\sum _{i=0}^{n-1}q^{i}=p{\frac {1-q^{n}}{1-q}}=1-q^{n}=1-(1-p)^{n}}$
-
-- Variante B: 
-${\displaystyle F(n)=\operatorname {P} (Y\leq n)=p\sum _{i=0}^{n}q^{i}=p{\frac {1-q^{n+1}}{1-q}}=1-q^{n+1}=1-(1-p)^{n+1}}$
-
-**Erwartungswert**:
-Variante A: $\operatorname {E}(X)={\frac {1}{p}}$
-Variante B: $\operatorname {E}(Y)=\operatorname {E}(X)-1={\frac {1-p}{p}}$.
-
-**Varianz**:
-Die Varianzen der beiden geometrischen Verteilungen sind $\operatorname {Var}(X)=\operatorname {Var}(Y)={\frac {1-p}{p^{2}}}={\frac {1}{p^{{2}}}}-{\frac {1}{p}}$
+| Geometrische Verteilung |   |
+|:---------------------|:--------------------------------------------------------|
+|**Definition**| Eine diskrete Zufallsgröße $X$ oder $Y$ mit den Parametern $p$ und $q=1-p$ (Wahrscheinlichkeiten für Erfolg / Misserfolg) genügt der geometrischen Verteilung $G(p)$, wenn für die Wahrscheinlichkeit, dass man genau $n$ Versuche benötigt, um zum ersten Erfolg zu kommen, gilt $${\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}=pq^{n-1}\quad (n=1,2,\dotsc )},$$ bzw. für die Wahrscheinlichkeit, $n$ Fehlversuche vor dem ersten Erfolg zu haben, gilt $$\operatorname {P}(Y=n)=p(1-p)^{{n}}=pq^{{n}}\quad (n=0,1,2,\dotsc ).$$|
+|**Verteilungsfunktion (A)**|$${\displaystyle \operatorname {P} (X\leq n)=1-q^{n}=1-(1-p)^{n}}$$|
+|**Verteilungsfunktion (B)**|$${\displaystyle \operatorname {P} (Y\leq n)=1-q^{n+1}=1-(1-p)^{n+1}}$$|
+|**Erwartungswert (A)**|$$\operatorname {E}(X)={\frac {1}{p}}$$|
+|**Erwartungswert (B)**|$$\operatorname {E}(Y)=\operatorname {E}(X)-1={\frac {1-p}{p}}$$|
+|**Varianz**|$$\operatorname {Var}(X)=\operatorname {Var}(Y)={\frac {1-p}{p^{2}}}={\frac {1}{p^{{2}}}}-{\frac {1}{p}}$$|
 
 **Gedächtnislosigkeit**: Die geometrische Verteilung ist eine gedächtnislose Verteilung, d. h., es gilt für
 
@@ -100,15 +73,17 @@ Ist also von einer geometrisch verteilten Zufallsvariablen bekannt, dass sie gr�
 Die Gedächtnislosigkeit ist eine definierende Eigenschaft; die geometrische Verteilung ist also die einzig mögliche gedächtnislose diskrete Verteilung. Ihr stetiges Pendant hierbei ist die Exponentialverteilung. 
 
 
-**Beispiel in R**: Wie oft muss ich beim *Mensch-ärgere-dich-nicht-Spiel* auf die erste Sechs warten? Dieses Warten auf das erstmalige Eintreten eines bestimmten Ereignisses, d.h. das „Warten auf den ersten Erfolg“, lässt sich mathematisch durch die zufällige Anzahl $X$ von BERNOULLI-Experimenten mit der Erfolgswahrscheinlichkeit $p$ beschreiben.
+### Wahrscheinlichkeitsverteilung (probability mass function) in R
 
-1. Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige bzw. 3 Mal warten muss (d.h. einen Misserfolg habe), ist:
+**Beispiel**: Wie oft muss ich beim *Mensch-ärgere-dich-nicht-Spiel* auf die erste Sechs warten? Dieses Warten auf das erstmalige Eintreten eines bestimmten Ereignisses, d.h. das „Warten auf den ersten Erfolg“, lässt sich mathematisch durch die zufällige Anzahl $X$ von BERNOULLI-Experimenten mit der Erfolgswahrscheinlichkeit $p$ beschreiben.
+
+Die Wahrscheinlichkeit, dass ich genau 4 Versuche benötige bzw. 3 Mal warten muss (d.h. einen Misserfolg habe), ist:
 
 ```{r density geometric distribution}
 dgeom(x = 3, prob = 1/6, log = FALSE)
 ```
 
-- Entsprechend ergibt sich für die Wartenzeiten 0 bis 10 dann folgendes Bild:
+Entsprechend ergibt sich für die Wartenzeiten $0$ bis $10$ Mal Würfeln dann folgendes Bild:
 
 ```{r}
 x   <- 0:12                                              # Choose the sample space (here, it's 0,1,2,...,10)
@@ -119,16 +94,18 @@ plot(x, p_x, type="h", xlim=c(0,12), ylim=c(0,max(p_x)), # Plot the Geometric pr
 title("CDF of Geometric (prob = 1/6)")
 ```
 
-2. Um nun die Wahrscheinlichkeit zu finden, dass man höchstens drei Mal warten muss -- also maximal vier Mal würfelt bevor man die $6$ erhält -- braucht man die CDF (`pgeom`).
 
-- Die entsprechende Wahrscheinlichkeit ist:
+### Verteilungsfunktion (CDF) in R
+
+Um nun die Wahrscheinlichkeit zu finden, dass man höchstens drei Mal warten muss -- also maximal vier Mal würfelt bevor man die $6$ erhält -- braucht man die CDF (`pgeom`).
+
+Die entsprechende Wahrscheinlichkeit ist:
 
 ```{r}
 pgeom(q = 3, prob = 1/6)
 ```
 
-- Für die Fälle, dass die Wartezeit kleiner bzw. gleich 0, 1, ... ist, ergibt sich dann folgendes Bild:
-
+Entsprechend ergibt sich für die Fälle, dass die Wartezeit kleiner bzw. gleich $0, 1, ...$ ist dann folgendes Bild:
 
 ```{r}
 x   <- 0:12                      # choose the sample space (here, it's 0,1,2,...,10)

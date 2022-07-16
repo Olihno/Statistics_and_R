@@ -22,3 +22,5 @@ tab:nice-tab
 basics
 axiomatischer-aufbau-der-wahrscheinlichkeitstheorie
 wahrscheinlichkeitsverteilungen-in-r
+wahrscheinlichkeitsverteilung-probability-mass-function-in-r
+verteilungsfunktion-cdf-in-r
