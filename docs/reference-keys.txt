@@ -19,3 +19,4 @@ final-words
 prerequisites
 fig:nice-fig
 tab:nice-tab
+basics
