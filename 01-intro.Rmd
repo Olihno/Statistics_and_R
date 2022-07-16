@@ -1,5 +1,9 @@
 # Introduction {#intro}
 
+## Axiomatischer Aufbau der Wahrscheinlichkeitstheorie
+
+Ausgangspunkt der Wahrscheinlichkeitstheorie sind Ereignisse, die als Mengen aufgefasst werden und denen Wahrscheinlichkeiten zugeordnet sind; Wahrscheinlichkeiten sind reelle Zahlen zwischen $0$ und $1$; die Zuordnung von Wahrscheinlichkeiten zu Ereignissen muss gewissen Mindestanforderungen genügen. 
+
 ## Prerequisites
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.

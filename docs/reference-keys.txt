@@ -20,3 +20,5 @@ prerequisites
 fig:nice-fig
 tab:nice-tab
 basics
+axiomatischer-aufbau-der-wahrscheinlichkeitstheorie
+wahrscheinlichkeitsverteilungen-in-r
