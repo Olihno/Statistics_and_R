@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Stetige Wahrscheinlichkeitsverteilungen | Statistics and R</title>
+  <title>Chapter 3 Probability | Statistics and R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Stetige Wahrscheinlichkeitsverteilungen | Statistics and R" />
+  <meta property="og:title" content="Chapter 3 Probability | Statistics and R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Stetige Wahrscheinlichkeitsverteilungen | Statistics and R" />
+  <meta name="twitter:title" content="Chapter 3 Probability | Statistics and R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="diskrete-wahrscheinlichkeitsverteilungen.html"/>
-<link rel="next" href="lineare-regression.html"/>
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="diskrete-wahrscheinlichkeitsverteilungen.html"/>
 <script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -80,9 +80,11 @@
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#math-example"><i class="fa fa-check"></i><b>2.5</b> math example</a></li>
 <li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#applications"><i class="fa fa-check"></i><b>2.6</b> Applications</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>3</b> Random variables</a>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="random-variables.html"><a href="random-variables.html#sample-space"><i class="fa fa-check"></i><b>3.1</b> Sample space</a></li>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#random-variables"><i class="fa fa-check"></i><b>3.1</b> Random variables</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#sample-space"><i class="fa fa-check"></i><b>3.2</b> Sample space</a></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#probability-mass-function"><i class="fa fa-check"></i><b>3.3</b> Probability mass function</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="diskrete-wahrscheinlichkeitsverteilungen.html"><a href="diskrete-wahrscheinlichkeitsverteilungen.html"><i class="fa fa-check"></i><b>4</b> Diskrete Wahrscheinlichkeitsverteilungen</a>
 <ul>
@@ -141,17 +143,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="stetige-wahrscheinlichkeitsverteilungen" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Stetige Wahrscheinlichkeitsverteilungen</h1>
-<div id="normalverteilung" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Normalverteilung</h2>
+<div id="probability" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Probability</h1>
+<div id="random-variables" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Random variables</h2>
+<p>Als Zufallsvariable bezeichnet man eine messbare Funktion von einem Wahrscheinlichkeitsraum in einen Messraum.</p>
 </div>
-<div id="exponentialverteilung" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Exponentialverteilung</h2>
-<p>The exponential distribution is the discrete pendant to the geometric distribution in that its defining property is that is doesn’t have a <em>memory</em>.</p>
+<div id="sample-space" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Sample space</h2>
+<p>In probability theory, the sample space (also called sample description space or possibility space) of an experiment or random trial is the set of all possible outcomes or results of that experiment.</p>
 </div>
-<div id="gamma-verteilung" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Gamma-Verteilung</h2>
+<div id="probability-mass-function" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Probability mass function</h2>
+<p>A probability mass function (<em>PMF</em>, german: <strong>Zähldichte</strong>, diskrete Wahrscheinlichkeitsfunktion) assigns every possible outcome (i.e. every element of the sample space) its probability.</p>
 
 </div>
 </div>
@@ -160,8 +164,8 @@
           </div>
         </div>
       </div>
-<a href="diskrete-wahrscheinlichkeitsverteilungen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lineare-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="diskrete-wahrscheinlichkeitsverteilungen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -192,7 +196,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-w_vert_kont.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-zufallsvariablen.Rmd",
 "text": "Edit"
 },
 "history": {

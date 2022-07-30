@@ -1,49 +1,43 @@
-# Diskrete Wahrscheinlichkeitsverteilungen
+# Discrete probability distributions
 
-Eine [Wahrscheinlichkeitsverteilung](/Statistics/Fundament) heißt eine diskrete Wahrscheinlichkeitsverteilung, wenn einer der folgenden drei Fälle gilt: 
+A **discrete probability distribution** is the probability distribution of a random variable that can take on only a countable number of values (almost surely) which means that the probability of any event $E$ can be expressed as a (finite or countably infinite) sum: 
 
-- Sie ist auf einer endlichen Menge definiert (${\displaystyle \{0,1,2,\dots ,n\}})$.
-- Sie ist auf einer abzählbar unendlichen Menge definiert (meist die natürlichen Zahlen $\mathbb{N}$ ).
-- Sie ist auf einer beliebigen Menge definiert, nimmt aber nur auf höchstens abzählbar vielen Elementen dieser Menge einen positiven Wert an. Das bedeutet, es existiert eine höchstens abzählbare Menge $M$ mit ${\displaystyle P(M)=1}$ (meist die natürlichen Zahlen, eingebettet in die reellen Zahlen).
+\begin{equation}
+  P(X\in E)=\sum _{\omega \in A}P(X=\omega),
+  (\#eq:prob-dist-discrete)
+\end{equation}
+
+where $A$ is a countable set and $\omega$ is an *elementary event*. Thus the discrete random variables are exactly those with a **probability mass function** $p ( x ) = P ( X = x )$ [@enwiki-prob-dist]. 
 
 
-## Wahrscheinlichkeitsverteilungen in R
 
-**R** nutzt standatisierte Präfixe, um verschiedene Verteilungseigenschaften abzufragen:
+## Bernoulli distribution {#bernoulli}
 
-| Präfix  | Bedeutung                                 | Math. Ausdruck |
-|:-----|:---------------------------|:-----------------|
-| `d`     | Zähldiche (*PMF*) bzw. Wahrscheinlichkeitsdichte  (*PDF*)   | $P(X=x)$       |
-| `p`     | Verteilungsfunktion (*CDF*) | $P(X \leq x)$  |
-| `q`     | Quantilsfunktion                         | Given $p$, the smallest $x$ such that $P(X\leq x) > p$|
-| `r`     | Ziehen aus gegebener Verteilung                         | `n`:= Anzahl der Ziehungen |
+Random variables with a **Bernoulli distribution** (sometimes *0-1-distribution*) are used to describe random events that take the value of $1$ ("success") with probability $p$ and the value of $0$ ("failure") with probability $q = 1-p$.
 
-`q` gibt also die Umkehrfunktion der *CDF* ($P(X\leq x)$) und damit für eine entsprechende Wahrscheinlichkeit $p$ dasjenige $x$, sodass die Wkt., dass $X\leq x$ gleich $p$ ist.
+Correspondingly, a **Bernoulli trial** (or *binomial trial*) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
 
-## Bernoulli-Verteilung
-
-Zufallsgrößen mit einer *Bernoulli-Verteilung* (auch *Null-Eins-Verteilung*, *Boole-Verteilung*) nutzt man zur Beschreibung von zufälligen Ereignissen, bei denen es nur zwei mögliche Versuchsausgänge (*Erfolg/Misserfolg*) gibt. 
-
-Die zugehörige Wahrscheinlichkeit $p$ für einen Erfolg nennt man Erfolgswahrscheinlichkeit und $q = 1 − p$ die Wahrscheinlichkeit eines Misserfolgs. 
-
-| Bernoulli-Verteilung |   |
+| Bernoulli distribution |   |
 |:---------------------|:--------------------------------------------------------|
-|**Definition**|*Eine diskrete Zufallsgröße $X$ mit Werten in der Menge $\{0,1\}$ unterliegt der Null-Eins-Verteilung mit dem Parameter $p\in [0,1]$, wenn sie der folgenden Wahrscheinlichkeitsfunktion folgt:* $$
-{\displaystyle f(x\mid p)={\begin{cases}p^{x}(1-p)^{1-x}&{\text{falls}}\quad x=0,1\\0&{\text{sonst.}}\end{cases}}} 
-$$|
-|**Verteilungsfunktion**|$${\displaystyle F_{X}(x)={\begin{cases}0&{\text{ falls }}\quad x<0\\1-p&{\text{ falls }}\quad 0\leq x<1\\1&{\text{ falls }}\quad x\geq 1\end{cases}}}.$$|
-|**Erwartungswert**|$${E}\left(X\right)=p$$|
-|**Varianz**|$${V}\left(X\right)=pq$$|
-|**Beispiel 1**|Werfen einer Münze: Kopf (Erfolg), $p=1/2$, und Zahl (Misserfolg), $q=1/2$.|
-|**Beispiel 2**|Werfen eines Würfels, wobei nur eine „6“ als Erfolg gewertet wird: $p=1/6$, $q=5/6$.|
-
-Man schreibt dann ${\displaystyle X\sim {\mathcal {B}}(p)}$ oder $X\sim Ber_{p}$. 
+|*Parameters*|$0 \leq p \leq 1, \quad q = 1 − p$|
+|*Notation*|${\displaystyle X\sim {\mathcal {B}}(p)}$ oder $X\sim Ber_{p}$|
+|*PMF*|${\displaystyle f(x\mid p)={\begin{cases}p^{x}(1-p)^{1-x}&{\text{falls}}\quad x=0,1\\0&{\text{sonst.}}\end{cases}}}$|
+|*CDF*|${\displaystyle F_{X}(x)={\begin{cases}0&{\text{ falls }}\quad x<0\\1-p&{\text{ falls }}\quad 0\leq x<1\\1&{\text{ falls }}\quad x\geq 1\end{cases}}}.$|
+|*Expectation*|${E}\left(X\right)=p$|
+|*Variance*|${V}\left(X\right)=pq$|
+|*Example 1*|Flipping a coin: Head ("success"), $p=1/2$, and tail ("failure"), $q=1/2$.|
+|*Example 2*|Throwing a die, whereat only „6“ is regarded as a success: $p=1/6$, $q=5/6$.|
 
 Eine Reihe von unabhängigen identischen Versuchen, bei der jeder Einzelversuch der Bernoulli-Verteilung genügt, wird ***Bernoulli-Prozess*** oder *bernoullisches Versuchsschema* genannt.
 
 ## Binominalverteilung
 
-Die Binomialverteilung beschreibt die Anzahl der Erfolge in einem **Bernoulli-Prozess**, also einer Serie von gleichartigen und unabhängigen Versuchen, die jeweils genau zwei mögliche Ergebnisse haben („Erfolg“ oder „Misserfolg“).
+Die Binomialverteilung beschreibt die Anzahl der Erfolge in einem **Bernoulli-Prozess** (see \@ref(bernoulli)), also einer Serie von gleichartigen und unabhängigen Versuchen, die jeweils genau zwei mögliche Ergebnisse haben („Erfolg“ oder „Misserfolg“). 
+
+| Bernoulli-Verteilung |   |
+|:---------------------|:--------------------------------------------------------|
+|*Notation*| $X\sim B_{n,p}$ |
+|*PMF*| $P(X=k\mid n,p) =  {\displaystyle {\begin{cases}{\binom {n}{k}}p^{k}(1-p)^{n-k}&{\text{falls}}\quad k\in \left\{0,1,\dots ,n\right\}\\0&{\text{sonst.}}\end{cases}}}$ |
 
 
 ## Geometrische Verteilung
@@ -55,10 +49,11 @@ Werden nacheinander *unabhängige Bernoulli-Experimente* durchgeführt, d.h. es 
 
 Wahrscheinlichkeiten zu. Theoretisch können dabei unendlich viele Bernoulli-Experimente nötig sein. Die beiden Varianten stehen in der Beziehung $X=Y+1$. 
 
-Da die Experimente unabhängig sind, müssen damit $P(X=n)$ alle Versuche vor dem $n$-ten Versuch müssen gescheitert sein und der $n$-te Versuch muss erfolgreich gewesen sein. Die Wahrscheinlichkeitsfunktion ist demanach $P(X=n) = (1-p)^{n-1} p$ .
+**Derivation**: *Da die Experimente unabhängig sind, müssen damit $P(X=n)$ alle Versuche vor dem $n$-ten Versuch müssen gescheitert sein und der $n$-te Versuch muss erfolgreich gewesen sein. Die Wahrscheinlichkeitsfunktion ist demanach $P(X=n) = (1-p)^{n-1} p$.*
 
-| Geometrische Verteilung |   |
+| Geometric distribution |   |
 |:---------------------|:--------------------------------------------------------|
+|*Parameter*|${\displaystyle 0<p\leq 1}$ success probability (real)|
 |**Definition / Verteilungsfunktion**| $X \sim G(p)$ , wenn für die Wahrscheinlichkeit, dass man genau $n$ Versuche benötigt, um zum ersten Erfolg zu kommen, gilt $${\displaystyle \operatorname {P} (X=n)=p(1-p)^{n-1}},$$ bzw. $Y \sim G(p)$, wenn für die Wahrscheinlichkeit, $n$ Fehlversuche vor dem ersten Erfolg zu haben, gilt $$\operatorname {P}(Y=n)=p(1-p)^{{n}}, \;n=0,1,2,\dotsc .$$|
 |**Verteilungsfunktion (A)**|$${\displaystyle \operatorname {P} (X\leq n)=1-q^{n}=1-(1-p)^{n}}$$|
 |**Verteilungsfunktion (B)**|$${\displaystyle \operatorname {P} (Y\leq n)=1-q^{n+1}=1-(1-p)^{n+1}}$$|
@@ -119,5 +114,51 @@ points(x = x[-n], y = Fx[-n], pch=19, col = "blue")
 points(x = x[-1], y = Fx[-n], pch=1, col = "blue")
 for(i in 1:(n-1)) points(x=x[i+0:1], y=Fx[c(i,i)], type="l", col = "blue")
 ```
+
+
+
+
+## Poisson distribution
+
+The **Poisson distribution** expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.
+
+***Derivation:*** The Poisson distribution can be derived from the binomial distribution: Consider a call center that receives seven calls per hour on average. Let's now divide the hour into 60 minutes, each representing a Bernoulli trial that yields a value of $1$ if somebody calls, and $0$ if not. The number of calls per hour $X$ can then be modeled as a binomial distributed random variable $X \sim B(n,p)$, where $n=60$. We obtain the success probability $p$ using the expectation of the binomial distribution $E[X]=np$ which equals $7$ (calls) in our case, i.e. $7=np=60p$ and hence $p=\frac{7}{60}$. Therefore, $X \sim B(60, \frac{7}{60})$, and $X \sim B(n, \frac{7}{n})$ for an partition of the hour into $n$ even segments.
+
+*For an arb*
+
+
+
+random experiment that The number of calls that falls into a particular $X$ can then be modelled  RV $X$ Let's divide the hour into 60 minutes.  The probability that $B()$  as the limit of $k$ (successes) if $n \to \infty$ (draws) from the binominal distribution. 
+
+| Poisson distribution |   |
+|:---------------------|:--------------------------------------------------------|
+|*Notation*|$X \sim \text{Pois}(\lambda)$|
+|*PMF*|$P(X=k) = {\displaystyle {\frac {\lambda ^{k}e^{-\lambda }}{k!}}}$|
+|*Example 1*|The number of decay events that occur from a radioactive source during a defined observation period.|
+|*Example 2*|Chewing gum on a sidewalk. The number of chewing gums on a single tile is approximately Poisson distributed.|
+|*Youtube*|[https://www.youtube.com/watch?v=IrHiPYOdEAo](https://www.youtube.com/watch?v=IrHiPYOdEAo)|
+
+### PMF example in R
+
+### CDF example in R
+
+
+
+## Multinominal distribution
+
+The **multinomial distribution** models the probability of counts for each side of a $k$-sided dice rolled $n$ times. For $n$ independent trials each of which leads to a success for exactly one of $k$ categories, with each category having a given fixed success probability, the multinomial distribution gives the probability of any particular combination of numbers of successes for the various categories.
+
+## Probability distributions in R
+
+**R** nutzt standatisierte Präfixe, um verschiedene Verteilungseigenschaften abzufragen:
+
+| Präfix  | Bedeutung                                 | Math. Ausdruck |
+|:-----|:---------------------------|:-----------------|
+| `d`     | Zähldiche (*PMF*) bzw. Wahrscheinlichkeitsdichte  (*PDF*)   | $P(X=x)$       |
+| `p`     | Verteilungsfunktion (*CDF*) | $P(X \leq x)$  |
+| `q`     | Quantilsfunktion                         | Given $p$, the smallest $x$ such that $P(X\leq x) > p$|
+| `r`     | Ziehen aus gegebener Verteilung                         | |
+
+`q` is hence the inverse of the *CDF* ($P(X\leq x)$) und damit für eine entsprechende Wahrscheinlichkeit $p$ dasjenige $x$, sodass die Wkt., dass $X\leq x$ gleich $p$ ist.
 
 

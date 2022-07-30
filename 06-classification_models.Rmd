@@ -1,0 +1,8 @@
+# Classification models
+
+In contrast to linear regression, the dependent variable in classification models is *discrete/categorical*.
+
+## Logistic regression
+
+Logistic regression can be applied if the dependent variable is **binary**.
+

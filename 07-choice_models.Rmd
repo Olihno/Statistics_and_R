@@ -1,0 +1,43 @@
+# Choice models
+
+Choice models aim to recover the parameters of a function that is linear in parameters and typically called *utility* on the basis of observations of discrete choice, i.e. observations where a decision maker chooses one and only one alternative from a finite set of feasible options.
+
+## Random utility {#random-utility}
+
+Consider that the random utility $U_{in}$, which an agent $n$ retrieves from an alternative $i$, can be written as the sum of a systematic part $V$ and a random error term $\varepsilon$, as shown in the following equation
+$$
+	U_{in} = V_{in} + \varepsilon_{in} = V(x_{in}, \beta^*) + \varepsilon_{in},
+$$
+where the systematic utility depends on variables $x$ and parameters $\beta^*$ and ... (guevaraSamplingAlternativesMultivariate2013).
+
+### Objective
+
+Generally, the objective of the choice analyst is to recover estimates of the parameters of V(.) for testing hypotheses about individual preferences and for measuring the non-market values of changes in the composition of the choice set and attributes (e.g. willingness-to-pay for changes in the quality or quantity of available sites).
+
+## Multinominal (MNL) or condtional logit (CL) models {#mnl}
+
+Under the assumption in \@ref(random-utility), if $\varepsilon$ is independent and identically distributed (iid) Extreme Value $(0, \mu)$, the probability that $n$ will choose alternative $i$ will correspond to the Logit model shown in the following equation
+\begin{equation} 
+	P_n(i)=\dfrac{e^{\mu V_{in}}}{\sum_{j\in C_n} e^{\mu V_{jn}}},
+	(\#eq:mnl)
+\end{equation} 
+where $C_n$ is the choice-set of $J_n$ elements from which agent $n$ chooses an alternative. The scale $\mu$ in Eq. \@ref(eq:mnl) is not identifiable and is usually normalized to equal $1$. For the derivation of the MNL model, see appendix \ref{ap:mnl}.
+
+### Scale {#scale}
+The scale of utility is irrelevant since adding or multiplying it by a constant does not change the utility ordering. The standard way to normalize the scale of utility is to normalize the variance of the error terms: When utility is multiplied by $\lambda$, the variance of each $\varepsilon_{nj}$ changes by $\lambda^2$: $Var(\lambda \varepsilon_{nj}) = \lambda^2 Var(\varepsilon_{nj})$.
+Therefore normalizing the variance of the error terms is equivalent to
+normalizing the scale of utility.
+
+### Interpretation {#mnl-interpretation}
+
+Estimated utility coefficients indicate the impact of each observed variable relative to the variance of the unobserved factors:
+
+- A larger variance in unobserved factors leads to lower coefficients, even if the observed factors have the same impact on utility (i.e., higher $\sigma$ means lower $\beta$ even if $\beta^2$ is the same.)
+- A larger variance in unobserved factors leads to lower coefficients, even if the observed factors have the same impact on utility (i.e., higher $\sigma$ means lower $\beta$ even if $\beta^2$ is the same.)
+
+### IIA assumption {#iia-assumption}
+Characteristic of the MNL model is the so-called Independence of Irrelevant Alternatives (IIA) property, which states that the odds of choosing a particular alternative over another one are independent of the attributes and the existence of all other alternatives. This implies that the ratio of choice probabilities are independent from the size and composition of choice sets and that the introduction of a new choice alternative will distract market shares from the existing choice alternatives in direct proportion to their current shares. If IIA holds, the true model is an MNL.
+
+### Estimation on subsets of alternatives
+
+

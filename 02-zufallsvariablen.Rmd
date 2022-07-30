@@ -1,3 +1,12 @@
-# Zufallsvariablen
+# Probability
 
-In der Als Zufallsvariable bezeichnet man eine messbare Funktion von einem Wahrscheinlichkeitsraum in einen Messraum. 
+## Random variables
+
+Als Zufallsvariable bezeichnet man eine messbare Funktion von einem Wahrscheinlichkeitsraum in einen Messraum.
+
+## Sample space
+In probability theory, the sample space (also called sample description space or possibility space) of an experiment or random trial is the set of all possible outcomes or results of that experiment.
+
+## Probability mass function
+
+A probability mass function (*PMF*, german: **Zähldichte**, diskrete Wahrscheinlichkeitsfunktion) assigns every possible outcome (i.e. every element of the sample space) its probability.
