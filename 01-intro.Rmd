@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# Introductions {#intro}
 
 ## Axiomatischer Aufbau der Wahrscheinlichkeitstheorie
 
