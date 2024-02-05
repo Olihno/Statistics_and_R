@@ -12,6 +12,4 @@ github-repo: rstudio/bookdown-demo
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Project aims
-
-The aim of this book is to collect statistical results in a brief but formal way with examples of application in *R Programming* [@r2018].
+The aim of this book is to collect statistical results in a brief but formal way with examples of application in *R Programming* [@r2018]. The introduction explains the notion of random variables.

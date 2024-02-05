@@ -1,0 +1,15 @@
+# Count data models
+
+## Risiko
+
+Risiko ist die Wahrscheinlichkeit für ein typischerweise negativ eingestuftes Ereignis. In der Epidemiologie ist es die Wkt. eine Krankheit zu bekommen angesichts einer Reihe von Merkmalen. Es ist somit der Anteil an Personen mit einem bestimmten Risikofaktor, bei denen die Krankheit auftritt. 
+
+```{r, message=FALSE}
+library(COUNT)
+data(titanic)
+attach(titanic)
+
+library(gmodels)
+CrossTable(survived, age, prop.t = F, prop.r = F, prop.c = F, prop.chisq = F)
+```
+

@@ -60,3 +60,6 @@ pmf-example-in-r
 cdf-example-in-r
 bernoulli-distribution
 bernoulli
+multinominal-distribution
+count-data-models
+risiko

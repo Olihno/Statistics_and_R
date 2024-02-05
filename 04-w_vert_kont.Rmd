@@ -2,9 +2,12 @@
 
 ## Normalverteilung
 
+Die Normalverteilung ist stetig und zentral in der Statistik. 
+
 ## Exponentialverteilung {#exponentialverteilung}
 
 The exponential distribution is the discrete pendant to the geometric distribution in that its defining property is that is doesn't have a *memory*.
 
 ## Gamma-Verteilung
 
+Die Gammaverteilung ist stetig.
