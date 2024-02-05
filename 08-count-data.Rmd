@@ -10,6 +10,7 @@ data(titanic)
 attach(titanic)
 
 library(gmodels)
-CrossTable(survived, age, prop.t = F, prop.r = F, prop.c = F, prop.chisq = F)
+CrossTable(survived, age, prop.t = F, prop.r = F, prop.c = F, prop.chisq = F, format = "SPSS")
+xtabs(~survived+age)
 ```
 
