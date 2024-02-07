@@ -2,7 +2,9 @@
 
 ## Risiko
 
-Risiko ist die Wahrscheinlichkeit für ein typischerweise negativ eingestuftes Ereignis. In der Epidemiologie ist es die Wkt. eine Krankheit zu bekommen angesichts einer Reihe von Merkmalen. Es ist somit der Anteil an Personen mit einem bestimmten Risikofaktor, bei denen die Krankheit auftritt. 
+Risiko ist die Wahrscheinlichkeit für ein typischerweise negativ eingestuftes Ereignis. In der Epidemiologie ist es die Wkt. eine Krankheit zu bekommen angesichts einer Reihe von Merkmalen. Es ist somit der Anteil an Personen mit einem bestimmten Risikofaktor, bei denen die Krankheit auftritt... 
+
+Ein Beispiel für Risiko zeigt die folgende Tabelle. Der Risikofaktor ist das Alter und das Ereignis ist das Überleben auf der Ttitanic.
 
 ```{r, message=FALSE}
 library(COUNT)
